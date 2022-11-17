@@ -2,10 +2,25 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 const getBooks = async () => {
-    const data = await prisma.book.findMany();
-    const author = await getAuthorInfo(data.authorId);
+    const books = await prisma.book.findMany();
+    const bookList = []
 
-    return data;
+    for (const book of books) {
+        const bookInfo = {
+            id: book.id,
+            title: book.title,
+            description: book.description,
+            image: book.image
+        }
+
+        const authorInfo = {
+            author: (await getAuthorInfo(book.authorId)).name
+        }
+
+        bookList.push(Object.assign(bookInfo, authorInfo));
+    }
+
+    return bookList;
 };
 
 const getBookById = async(bookId: number) => {
