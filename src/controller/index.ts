@@ -1,1 +1,2 @@
-export { default as userController } from "./userController";
+export { default as bookController } from "./bookController";
+export { default as categoryController } from "./categoryController"; 
