@@ -10,16 +10,16 @@ datasource db {
 model author {
   id              Int    @id @default(autoincrement())
   name            String @db.VarChar(20)
-  authorIntroduct String @db.VarChar
+  authorIntroduct String
   book            book?
 }
 
 model book {
   id            Int    @id @default(autoincrement())
   title         String @db.VarChar
-  image         String @db.VarChar
-  description   String @db.VarChar
-  bookIntroduct String @db.VarChar
+  image         String @db.VarChar(100)
+  description   String
+  bookIntroduct String
   authorId      Int    @unique
   author        author @relation(fields: [authorId], references: [id], onDelete: Cascade, map: "book_author_id_fk")
 }

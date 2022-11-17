@@ -1,9 +1,13 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-const getUserById = async (userId: number) => {
+const getBooks = async () => {
+    const data = await prisma.book.findMany();
+    return data;
 };
 
-const bookService = {};
+const bookService = {
+    getBooks,
+};
 
 export default bookService;
