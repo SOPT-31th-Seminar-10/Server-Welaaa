@@ -1,7 +1,8 @@
 import { Router } from "express";
+import { categoryController } from "../controller";
 
 const router: Router = Router();
 
-//* TODO 라우터 설정
+router.get("/", categoryController.getAllCategory);
 
 export default router;
