@@ -6,7 +6,7 @@ const PORT = 3000;
 
 app.use(express.json());
 
-app.use("/api", router); 
+app.use("/", router); 
 
 //* HTTP method - GET
 app.get("/", (req: Request, res: Response, next: NextFunction) => {
