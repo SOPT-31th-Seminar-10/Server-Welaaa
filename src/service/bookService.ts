@@ -29,6 +29,8 @@ const getBookById = async(bookId: number) => {
             id: bookId
         },
     })
+    
+    if(!book) return;
 
     const author = await getAuthorInfo(book.authorId);
     const authorInfo = {
